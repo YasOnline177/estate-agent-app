@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import SearchForm from "./components/SearchForm";
 import PropertyCard from "./components/PropertyCard";
+import PropertyDetails from "./components/PropertyDetails";
 import propertiesData from "./data/properties.json"; 
 
 function App() {
@@ -51,31 +53,39 @@ function App() {
   }
 
   return (
-    <>
       <div className="app-container">
         <header>
           <h1>Estate Agent Property Search</h1>
         </header>
 
         <main>
-          <SearchForm onSearch={handleSearch} />
+          <Routes>
+            {/* Home page with search and results */}
+            <Route path="/" element={
+              <>
+                <SearchForm onSearch={handleSearch} />
 
-          {/* Results section */}
-          <section className="results-container">
-            {results.length > 0 ? (
-              results.map(property => (
-                <PropertyCard 
-                  key={property.id}
-                  property={property}
-                />
-              ))
-            ) : (
-              <p>No properties match your search.</p>
-            )}
-          </section>
+                {/* Results section */}
+                <section className="results-container">
+                  {results.length > 0 ? (
+                    results.map(property => (
+                      <PropertyCard 
+                        key={property.id}
+                        property={property}
+                      />
+                    ))
+                  ) : (
+                    <p>No properties match your search.</p>
+                  )}
+                </section>
+              </>
+            } />
+
+            {/* Property page with gallery */}
+            <Route path="/property/:id" element={<PropertyDetails />} />
+          </Routes>
         </main>
       </div>
-    </>
   );
 }
 

@@ -10,12 +10,12 @@
       "shortDescription": "Three-bedroom semi-detached house in Petts Wood",
       "longDescription": "Attractive three-bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. Two receptions, fitted kitchen/breakfast room and conservatory. Utility room and cloakroom. First floor has three bedrooms and a family bathroom with separate WC. Double glazing and gas central heating throughout.",
       "images": [
-        "images/prop1_1.jpg",
-        "images/prop1_2.jpg",
-        "images/prop1_3.jpg",
-        "images/prop1_4.jpg",
-        "images/prop1_5.jpg",
-        "images/prop1_6.jpg"
+        "/images/prop1_1.jpg",
+        "/images/prop1_2.jpg",
+        "/images/prop1_3.jpg",
+        "/images/prop1_4.jpg",
+        "/images/prop1_5.jpg",
+        "/images/prop1_6.jpg"
       ],
       "floorPlan": "images/house_floorplan.jpg",
       "lat": 51.389,
@@ -31,12 +31,12 @@
       "shortDescription": "Two-bedroom flat with private garden in Orpington",
       "longDescription": "Modern two-bedroom, two-bathroom flat with private courtyard garden. Open-plan kitchen and living area with integrated appliances. Wooden floors, bi-fold doors to garden, wet room and family bathroom. Apartment built 5 years ago and under 10-year building guarantee.",
       "images": [
-        "images/prop2_1.jpg",
-        "images/prop2_2.jpg",
-        "images/prop2_3.jpg",
-        "images/prop2_4.jpg",
-        "images/prop2_5.jpg",
-        "images/prop2_6.jpg"
+        "/images/prop2_1.jpg",
+        "/images/prop2_2.jpg",
+        "/images/prop2_3.jpg",
+        "/images/prop2_4.jpg",
+        "/images/prop2_5.jpg",
+        "/images/prop2_6.jpg"
       ],
       "floorPlan": "images/flat_floorplan.jpg",
       "lat": 51.368,
@@ -52,12 +52,12 @@
             "shortDescription": "Spacious four-bedroom terraced house in Camden",
             "longDescription": "This four-bedroom terraced house is located in the heart of Camden, walking distance to shops, restaurants, and public transport. Large living room, modern kitchen, two bathrooms, private garden. Double glazing and central heating throughout.",
             "images": [
-                "images/prop3_1.jpg",
-                "images/prop3_2.jpg",
-                "images/prop3_3.jpg",
-                "images/prop3_4.jpg",
-                "images/prop3_5.jpg",
-                "images/prop3_6.jpg"
+                "/images/prop3_1.jpg",
+                "/images/prop3_2.jpg",
+                "/images/prop3_3.jpg",
+                "/images/prop3_4.jpg",
+                "/images/prop3_5.jpg",
+                "/images/prop3_6.jpg"
             ],
             "floorPlan": "images/house_floorplan.jpg",
             "lat": 51.534,
@@ -73,12 +73,12 @@
             "shortDescription": "One-bedroom studio flat in Whitechapel",
             "longDescription": "Compact one-bedroom studio flat in the heart of Whitechapel. Modern kitchen, open-plan living, new bathroom. Perfect for young professionals or students. Excellent transport links and close to shops and restaurants.",
             "images": [
-                "images/prop4_1.jpg",
-                "images/prop4_2.jpg",
-                "images/prop4_3.jpg",
-                "images/prop4_4.jpg",
-                "images/prop4_5.jpg",
-                "images/prop4_6.jpg"
+                "/images/prop4_1.jpg",
+                "/images/prop4_2.jpg",
+                "/images/prop4_3.jpg",
+                "/images/prop4_4.jpg",
+                "/images/prop4_5.jpg",
+                "/images/prop4_6.jpg"
             ],
             "floorPlan": "images/flat_floorplan.jpg",
             "lat": 51.519,
@@ -94,12 +94,12 @@
             "shortDescription": "Luxury five-bedroom house in Chelsea",
             "longDescription": "Spacious five-bedroom house in a prestigious Chelsea location. Includes large living spaces, modern kitchen, three bathrooms, private garden, and garage. Elegant interiors, central heating, and double glazing throughout. Ideal for families seeking luxury and convenience.",
             "images": [
-                "images/prop5_1.jpg",
-                "images/prop5_2.jpg",
-                "images/prop5_3.jpg",
-                "images/prop5_4.jpg",
-                "images/prop5_5.jpg",
-                "images/prop5_6.jpg"
+                "/images/prop5_1.jpg",
+                "/images/prop5_2.jpg",
+                "/images/prop5_3.jpg",
+                "/images/prop5_4.jpg",
+                "/images/prop5_5.jpg",
+                "/images/prop5_6.jpg"
             ],
             "floorPlan": "images/house_floorplan.jpg",
             "lat": 51.487,
@@ -115,12 +115,12 @@
             "shortDescription": "Three-bedroom flat in Islington",
             "longDescription": "Modern three-bedroom flat in Islington, with open-plan living area, two bathrooms, fitted kitchen, and balcony. Excellent transport links and nearby shops. Ideal for families or professionals.",
             "images": [
-                "images/prop6_1.jpg",
-                "images/prop6_2.jpg",
-                "images/prop6_3.jpg",
-                "images/prop6_4.jpg",
-                "images/prop6_5.jpg",
-                "images/prop6_6.jpg"
+                "/images/prop6_1.jpg",
+                "/images/prop6_2.jpg",
+                "/images/prop6_3.jpg",
+                "/images/prop6_4.jpg",
+                "/images/prop6_5.jpg",
+                "/images/prop6_6.jpg"
             ],
             "floorPlan": "images/flat_floorplan.jpg",
             "lat": 51.540,
@@ -136,12 +136,12 @@
             "shortDescription": "Two-bedroom riverside house in Bermondsey",
             "longDescription": "Charming two-bedroom riverside house in Bermondsey. Includes living/dining room, kitchen, two bedrooms, bathroom, and small garden. Close to shops, restaurants, and public transport. Ideal for couples or small families.",
             "images": [
-                "images/prop7_1.jpg",
-                "images/prop7_2.jpg",
-                "images/prop7_3.jpg",
-                "images/prop7_4.jpg",
-                "images/prop7_5.jpg",
-                "images/prop7_6.jpg"
+                "/images/prop7_1.jpg",
+                "/images/prop7_2.jpg",
+                "/images/prop7_3.jpg",
+                "/images/prop7_4.jpg",
+                "/images/prop7_5.jpg",
+                "/images/prop7_6.jpg"
             ],
             "floorPlan": "images/house_floorplan.jpg",
             "lat": 51.501,
