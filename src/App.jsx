@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchForm from "./components/SearchForm";
+import PropertyCard from "./components/PropertyCard";
 import propertiesData from "./data/properties.json"; 
 
 function App() {
@@ -63,13 +64,10 @@ function App() {
           <section className="results-container">
             {results.length > 0 ? (
               results.map(property => (
-                <div key={property.id} className="property-card">
-                  <img src={property.images[0]} alt={property.shortDescription} />
-                  <h3>{property.shortDescription}</h3>
-                  <p>£{property.price.toLocaleString()}</p>
-                  <p>{property.bedrooms} bedrooms</p>
-                  <p>{property.postcodeArea}</p>
-                </div>
+                <PropertyCard 
+                  key={property.id}
+                  property={property}
+                />
               ))
             ) : (
               <p>No properties match your search.</p>
