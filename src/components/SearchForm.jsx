@@ -126,11 +126,12 @@ function SearchForm({ onSearch }) {
                     </select>
                 </label>
             </div>
-            
+
             <button type="submit">Search</button>
             </section>
 
         </form>
+        
     )
 }
 
