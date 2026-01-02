@@ -63,6 +63,12 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+  .tab-content {
+    background-color: #f9f9f9;
+  }
+  .tabs button:active {
+    color: white;
+  }
 }
 
 /* App container layout */
@@ -181,4 +187,45 @@ input, select {
 
 .thumbnails img.selected {
   border-color: #646cff;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.tabs button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: transparent;
+  color: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+
+
+.tabs button.active {
+  background: #646cff;
+  color: white;
+  border-color: #535bf2;
+}
+
+.tab-content {
+  width: 100%;
+  margin-top: 15px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.floorplan-img {
+  display: block;
+  max-width: 100%;
+  border-radius: 8px;
+  margin: auto;
 }

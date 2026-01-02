@@ -17,7 +17,7 @@
         "/images/prop1_5.jpg",
         "/images/prop1_6.jpg"
       ],
-      "floorPlan": "images/house_floorplan.jpg",
+      "floorPlan": "/images/house_floorplan.jpg",
       "lat": 51.389,
       "lng": 0.074
     },
@@ -38,7 +38,7 @@
         "/images/prop2_5.jpg",
         "/images/prop2_6.jpg"
       ],
-      "floorPlan": "images/flat_floorplan.jpg",
+      "floorPlan": "/images/flat_floorplan.jpg",
       "lat": 51.368,
       "lng": 0.095
     },
@@ -59,7 +59,7 @@
                 "/images/prop3_5.jpg",
                 "/images/prop3_6.jpg"
             ],
-            "floorPlan": "images/house_floorplan.jpg",
+            "floorPlan": "/images/house_floorplan.jpg",
             "lat": 51.534,
             "lng": -0.142
     },
@@ -80,7 +80,7 @@
                 "/images/prop4_5.jpg",
                 "/images/prop4_6.jpg"
             ],
-            "floorPlan": "images/flat_floorplan.jpg",
+            "floorPlan": "/images/flat_floorplan.jpg",
             "lat": 51.519,
             "lng": -0.059
     },
@@ -101,7 +101,7 @@
                 "/images/prop5_5.jpg",
                 "/images/prop5_6.jpg"
             ],
-            "floorPlan": "images/house_floorplan.jpg",
+            "floorPlan": "/images/house_floorplan.jpg",
             "lat": 51.487,
             "lng": -0.168
     },
@@ -122,7 +122,7 @@
                 "/images/prop6_5.jpg",
                 "/images/prop6_6.jpg"
             ],
-            "floorPlan": "images/flat_floorplan.jpg",
+            "floorPlan": "/images/flat_floorplan.jpg",
             "lat": 51.540,
             "lng": -0.105
     },
@@ -143,7 +143,7 @@
                 "/images/prop7_5.jpg",
                 "/images/prop7_6.jpg"
             ],
-            "floorPlan": "images/house_floorplan.jpg",
+            "floorPlan": "/images/house_floorplan.jpg",
             "lat": 51.501,
             "lng": -0.065
     }
