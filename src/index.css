@@ -24,8 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -65,4 +63,43 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* App container layout */
+.app-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Search form container */
+.search-form {
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Section heading */
+.form-section h2 {
+  margin-bottom: 20px;
+}
+
+/* Group related fields together */
+.form-group {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+/* Lebel and input alignment */
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+/* Inputs consistency */
+input, select {
+  padding: 6px;
+  min-width: 180px;
 }
