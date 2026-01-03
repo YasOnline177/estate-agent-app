@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchForm from "./components/SearchForm";
 import PropertyCard from "./components/PropertyCard";
 import PropertyDetails from "./components/PropertyDetails";
+import Favourites from "./components/Favourites";
 import propertiesData from "./data/properties.json"; 
 
 function App() {
   // State to store filtered search results
   const [results, setResults] = useState(propertiesData.properties);
+  // Store favourite properties selected by the user
+  const [favourites, setFavourites] = useState([]);
+  const [isDragging, setIsDragging] = useState(false);  // show floating drop zone
   
   // Handle search logic from SearchForm
   function handleSearch(filters) {
@@ -52,11 +57,42 @@ function App() {
     setResults(filtered);
   }
 
+  // Add a property to favourites and prevent duplicate properties
+  function addToFavourites(property) {
+    // Prevent duplicates
+    const alreadyAdded = favourites.some(fav => fav.id === property.id);
+    if (!alreadyAdded) {
+      setFavourites([...favourites, property]);
+    }
+  }
+
   return (
       <div className="app-container">
         <header>
           <h1>Estate Agent Property Search</h1>
+          <nav>
+            <Link to="/favourites">
+              View Favourites
+            </Link>
+          </nav>
         </header>
+
+        {/* Floating drop zone for drag & drop */}
+        {isDragging && (
+          <div
+            className="floating-favourites"
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={(e) => {
+              e.preventDefault();
+              setIsDragging(false);
+              const id = e.dataTransfer.getData("propertyId");
+              const property = results.find(p => p.id === id);
+              if (property) addToFavourites(property);
+            }}
+          >
+            Drop Here to Add to Favourites
+          </div>
+        )}
 
         <main>
           <Routes>
@@ -65,6 +101,8 @@ function App() {
               <>
                 <SearchForm onSearch={handleSearch} />
 
+                
+
                 {/* Results section */}
                 <section className="results-container">
                   {results.length > 0 ? (
@@ -72,6 +110,7 @@ function App() {
                       <PropertyCard 
                         key={property.id}
                         property={property}
+                        setIsDragging={setIsDragging}
                       />
                     ))
                   ) : (
@@ -82,7 +121,19 @@ function App() {
             } />
 
             {/* Property page with gallery */}
-            <Route path="/property/:id" element={<PropertyDetails />} />
+            <Route 
+              path="/property/:id" 
+              element={
+                <PropertyDetails 
+                  addToFavourites={addToFavourites}
+                />
+              } 
+            />
+
+            <Route 
+              path="/favourites" element={<Favourites favourites={favourites} />} 
+            />
+            
           </Routes>
         </main>
       </div>

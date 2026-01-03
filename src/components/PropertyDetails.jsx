@@ -6,21 +6,25 @@ import { useState } from "react";
     Shows a single property's details including an image gallery
 */
 
-function PropertyDetails() {
+function PropertyDetails({ addToFavourites }) {
     // State for the currently active tab
     const [activeTab, setActiveTab] = useState("description");
     const { id } = useParams(); // get property id from URL
+    
     const property = propertiesData.properties.find(p => p.id === id);
-
+    if (!property) return <p>Property not found.</p>
     // State for the main displayed image 
     const [mainImage, setMainImage] = useState(property.images[0]);
-
-    if (!property) return <p>Property not found.</p>
 
     return (
         <div className="property-detail-container">
             <h2>{property.shortDescription}</h2>
             <p>£{property.price.toLocaleString()} | {property.bedrooms} bedrooms | {property.postcodeArea}</p>
+
+            {/* Add to favourites button */}
+            <button onClick={() => addToFavourites(property)} className="favourite-btn"> 
+                Add to favourites
+            </button>
 
             {/* Main image display */}
             <div className="main-image">
@@ -30,27 +34,27 @@ function PropertyDetails() {
             {/* Thumbnail gallery */}
             <div className="thumbnails">
                 {property.images.map((img, index) => (
-                    <img 
-                        key={index} 
-                        src={img} 
-                        alt={`${property.shortDescription} ${index + 1}`} 
-                        className={img === mainImage ? "selected": ""}
+                    <img
+                        key={index}
+                        src={img}
+                        alt={`${property.shortDescription} ${index + 1}`}
+                        className={img === mainImage ? "selected" : ""}
                         onClick={() => setMainImage(img)}
                     />
                 ))}
             </div>
-            
+
             {/* Tabs navigation */}
             <div className="tabs">
                 <button onClick={() => setActiveTab("description")} className={activeTab === "description" ? "active" : ""}>
-                    Description 
+                    Description
                 </button>
 
                 <button onClick={() => setActiveTab("floorplan")} className={activeTab === "floorplan" ? "active" : ""}>
                     Floor Plan
                 </button>
 
-                <button onClick={() => setActiveTab("map")} className={activeTab === "map" ? "active" : ""}> 
+                <button onClick={() => setActiveTab("map")} className={activeTab === "map" ? "active" : ""}>
                     Map
                 </button>
 
@@ -68,7 +72,7 @@ function PropertyDetails() {
 
                     {/* Google map tab */}
                     {activeTab === "map" && (
-                        <iframe 
+                        <iframe
                             title="map"
                             width="100%"
                             height="350"
@@ -79,7 +83,7 @@ function PropertyDetails() {
                     )}
                 </div>
             </div>
-            
+
         </div>
     );
 }
