@@ -6,13 +6,16 @@ import { useState } from "react";
     Shows a single property's details including an image gallery
 */
 
-function PropertyDetails({ addToFavourites }) {
+function PropertyDetails() {
     // State for the currently active tab
     const [activeTab, setActiveTab] = useState("description");
-    const { id } = useParams(); // get property id from URL
+    
+    // get property id from URL
+    const { id } = useParams(); 
     
     const property = propertiesData.properties.find(p => p.id === id);
     if (!property) return <p>Property not found.</p>
+
     // State for the main displayed image 
     const [mainImage, setMainImage] = useState(property.images[0]);
 
@@ -21,17 +24,10 @@ function PropertyDetails({ addToFavourites }) {
             <h2>{property.shortDescription}</h2>
             <p>£{property.price.toLocaleString()} | {property.bedrooms} bedrooms | {property.postcodeArea}</p>
 
-            {/* Add to favourites button */}
-            <button onClick={() => addToFavourites(property)} className="favourite-btn"> 
-                Add to favourites
-            </button>
-
-            {/* Main image display */}
             <div className="main-image">
                 <img src={mainImage} alt={property.shortDescription} />
             </div>
 
-            {/* Thumbnail gallery */}
             <div className="thumbnails">
                 {property.images.map((img, index) => (
                     <img
@@ -44,7 +40,6 @@ function PropertyDetails({ addToFavourites }) {
                 ))}
             </div>
 
-            {/* Tabs navigation */}
             <div className="tabs">
                 <button onClick={() => setActiveTab("description")} className={activeTab === "description" ? "active" : ""}>
                     Description
@@ -58,19 +53,15 @@ function PropertyDetails({ addToFavourites }) {
                     Map
                 </button>
 
-                {/* Tab content */}
                 <div className="tab-content">
-                    {/* Long description tab */}
                     {activeTab === "description" && (
                         <p>{property.longDescription}</p>
                     )}
 
-                    {/* Floorplan tab */}
                     {activeTab === "floorplan" && (
                         <img src={property.floorPlan} alt="Floor Plan" className="floorplan-img" />
                     )}
 
-                    {/* Google map tab */}
                     {activeTab === "map" && (
                         <iframe
                             title="map"

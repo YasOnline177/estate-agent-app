@@ -2,16 +2,16 @@
    Root Variables
 ---------------------------------- */
 :root {
-  --primary-color: #4466cc;       
+  --primary-color: #4466cc;
   --primary-hover: #3355aa;
   --primary-active: #223388;
-  --background: #f5f7fa;          
+  --background: #f5f7fa;
   --card-background: #ffffff;
   --text-color: #1f1f1f;
   --subtext-color: #555;
-  --shadow-color: rgba(0,0,0,0.1);
+  --shadow-color: rgba(0, 0, 0, 0.1);
   --border-radius: 8px;
-  
+
   font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 1.5;
@@ -84,22 +84,6 @@ button:active {
   transform: scale(0.97);
 }
 
-.favourite-btn {
-  background-color: var(--primary-color);
-  color: white;
-  border: 1px solid var(--primary-color);
-}
-
-.favourite-btn:hover {
-  background-color: var(--primary-hover);
-  border-color: var(--primary-hover);
-}
-
-.favourite-btn:active {
-  background-color: var(--primary-active);
-  border-color: var(--primary-active);
-}
-
 /* -------------------------------
    Layout Containers
 ---------------------------------- */
@@ -107,6 +91,11 @@ button:active {
   max-width: 900px;
   margin: auto;
   padding: 20px;
+}
+
+.home-main {
+  display: flex;
+  gap: 20px;
 }
 
 .search-form {
@@ -131,20 +120,92 @@ label {
   font-weight: 500;
 }
 
-input, select {
+input,
+select {
   padding: 6px;
   min-width: 180px;
 }
 
+/* ---------------------------
+   Favourites Sidebar and Drop Zones
+------------------------------*/
+.favourites-sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: var(--card-background);
+  box-shadow: -2px 0 8px var(--shadow-color);
+  z-index: 10;
+}
+
+.favourite-list {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.favourite-btn {
+  background-color: var(--primary-color);
+  color: white;
+  width: 100%;
+  padding: 8px;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.favourite-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.trash-zone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100 vw;
+  height: 100vw;
+  z-index: 900;
+}
+
+.drop-zone {
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.drop-zone.add {
+  position: fixed;
+  bottom: 20px;
+  right: 300px;
+  background: var(--primary-color);
+  color: white;
+  padding: 15px 20px;
+  border-radius: var(--border-radius);
+  z-index: 100;
+}
+
+.drop-zone.remove {
+  position: fixed;
+  top: 20px;
+  right: 300px;
+  background: red;
+  color: white;
+  padding: 15px 20px;
+  border-radius: var(--border-radius);
+  z-index: 100;
+}
 /* -------------------------------
    Results / Cards
 ---------------------------------- */
-.results-container,
-.favourites-container {
+.results-container {
+  margin-right: 270px;
+  padding-top: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  margin-top: 30px;
 }
 
 .property-link {
@@ -157,7 +218,7 @@ input, select {
   border-radius: var(--border-radius);
   padding: 10px;
   overflow: hidden;
-  cursor: grab;
+  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 2px 8px var(--shadow-color);
 }
@@ -165,20 +226,6 @@ input, select {
 .property-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 15px var(--shadow-color);
-}
-
-.property-card:active {
-  cursor: grabbing;
-  opacity: 0.8;
-  transform: scale(0.98);
-}
-
-.property-card::after {
-  content: "Drag to add to favourites";
-  display: block;
-  font-size: 12px;
-  opacity: 0.6;
-  margin-top: 6px;
 }
 
 .property-card img {
@@ -272,33 +319,4 @@ input, select {
   max-width: 100%;
   border-radius: var(--border-radius);
   margin: auto;
-}
-
-/* -------------------------------
-   Drag & Drop Favourites
----------------------------------- */
-.floating-favourites {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--primary-color);
-  color: white;
-  padding: 12px 18px;
-  border-radius: var(--border-radius);
-  font-weight: bold;
-  box-shadow: 0 4px 15px var(--shadow-color);
-  z-index: 1000;
-  pointer-events: auto;
-  animation: popIn 0.2s ease-out;
-}
-
-@keyframes popIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
 }

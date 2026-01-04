@@ -5,18 +5,22 @@ import { Link } from "react-router-dom";
     Used on the search result page
 */
 
-function PropertyCard({ property, setIsDragging }) {
+function PropertyCard({ property, setIsDragging, addToFavourites, setDragSource }) {
     return (
         <div 
-            draggable 
+            draggable
             onDragStart={(e) => {
                 e.dataTransfer.setData("propertyId", property.id);
-                setIsDragging(true);
+                setIsDragging(true);    // show drop zone
+                setDragSource("results");   // mark that the dragged item is from the results list
             }}
-            onDragEnd={() => setIsDragging(false)}
+            onDragEnd={() => {
+                setIsDragging(false)
+                setDragSource(null)
+            }}
         >
-            <Link 
-                to={`/property/${property.id}`} 
+            <Link
+                to={`/property/${property.id}`}
                 className="property-link"
             >
                 <article className="property-card">
@@ -30,8 +34,19 @@ function PropertyCard({ property, setIsDragging }) {
                     </div>
                 </article>
             </Link>
+
+            {/* Favourite button */}
+            {addToFavourites && (
+                <button 
+                    className="favourite-btn"
+                    onClick={() => addToFavourites(property)}
+                    style={{ marginTop: "8px", width: "100%"}}
+                >
+                    Add to Favourites
+                </button>
+            )}
         </div>
     )
 }
 
-export default PropertyCard;
+export default PropertyCard; 

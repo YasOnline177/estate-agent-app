@@ -1,28 +1,30 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
 import SearchForm from "./components/SearchForm";
 import PropertyCard from "./components/PropertyCard";
 import PropertyDetails from "./components/PropertyDetails";
 import Favourites from "./components/Favourites";
-import propertiesData from "./data/properties.json"; 
+import propertiesData from "./data/properties.json";
 
 function App() {
   // State to store filtered search results
   const [results, setResults] = useState(propertiesData.properties);
-  // Store favourite properties selected by the user
+  // State to store favourite properties
   const [favourites, setFavourites] = useState([]);
-  const [isDragging, setIsDragging] = useState(false);  // show floating drop zone
-  
+  // Drag state to show floating drop zone
+  const [isDragging, setIsDragging] = useState(false);
+  // 
+  const [dragSource, setDragSource] = useState(null);
+
   // Handle search logic from SearchForm
   function handleSearch(filters) {
     const filtered = propertiesData.properties.filter(prop => {
-      
+
       // Property type filter 
       if (filters.type && prop.type.toLowerCase() !== filters.type.toLowerCase()) {
         return false;
       }
-      
+
       // Price filter
       if (filters.minPrice && prop.price < parseInt(filters.minPrice)) {
         return false;
@@ -30,7 +32,7 @@ function App() {
       if (filters.maxPrice && prop.price > parseInt(filters.maxPrice)) {
         return false;
       }
-      
+
       // Bedroom filter
       if (filters.minBedrooms && prop.bedrooms < parseInt(filters.minBedrooms)) {
         return false;
@@ -57,86 +59,75 @@ function App() {
     setResults(filtered);
   }
 
-  // Add a property to favourites and prevent duplicate properties
+  // Add a property to favourites and prevent duplicates
   function addToFavourites(property) {
-    // Prevent duplicates
-    const alreadyAdded = favourites.some(fav => fav.id === property.id);
-    if (!alreadyAdded) {
+    if (!favourites.some(fav => fav.id === property.id)) {
       setFavourites([...favourites, property]);
     }
   }
 
+  // Remove a property from favourites
+  function removeFromFavourites(propertyId) {
+    setFavourites(favourites.filter(fav => fav.id !== propertyId));
+  }
+
+  // Clear all favourites
+  function clearFavourites() {
+    setFavourites([]);
+  }
+
   return (
-      <div className="app-container">
-        <header>
-          <h1>Estate Agent Property Search</h1>
-          <nav>
-            <Link to="/favourites">
-              View Favourites
-            </Link>
-          </nav>
-        </header>
+    <div className="app-container">
+      <h1>Estate Agent Property Search</h1>
 
-        {/* Floating drop zone for drag & drop */}
-        {isDragging && (
-          <div
-            className="floating-favourites"
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => {
-              e.preventDefault();
-              setIsDragging(false);
-              const id = e.dataTransfer.getData("propertyId");
-              const property = results.find(p => p.id === id);
-              if (property) addToFavourites(property);
-            }}
-          >
-            Drop Here to Add to Favourites
-          </div>
-        )}
+      <main>
+        <Routes>
+          {/* Home page with search and results */}
+          <Route path="/" element={
+            <>
+              <SearchForm onSearch={handleSearch} />
 
-        <main>
-          <Routes>
-            {/* Home page with search and results */}
-            <Route path="/" element={
-              <>
-                <SearchForm onSearch={handleSearch} />
-
-                
-
+              <div className="home-main">
                 {/* Results section */}
                 <section className="results-container">
                   {results.length > 0 ? (
                     results.map(property => (
-                      <PropertyCard 
+                      <PropertyCard
                         key={property.id}
                         property={property}
                         setIsDragging={setIsDragging}
+                        setDragSource={setDragSource}
+                        addToFavourites={addToFavourites}
                       />
                     ))
                   ) : (
                     <p>No properties match your search.</p>
                   )}
                 </section>
-              </>
-            } />
 
-            {/* Property page with gallery */}
-            <Route 
-              path="/property/:id" 
-              element={
-                <PropertyDetails 
+                <Favourites
+                  favourites={favourites}
                   addToFavourites={addToFavourites}
+                  removeFromFavourites={removeFromFavourites}
+                  clearFavourites={clearFavourites}
+                  results={results}
+                  isDragging={isDragging}
+                  setIsDragging={setIsDragging}
+                  dragSource={dragSource}
+                  setDragSource={setDragSource} // track the source of the dragged item
                 />
-              } 
-            />
+              </div>
+            </>
+          } />
 
-            <Route 
-              path="/favourites" element={<Favourites favourites={favourites} />} 
-            />
-            
-          </Routes>
-        </main>
-      </div>
+          {/* Property page with gallery */}
+          <Route
+            path="/property/:id"
+            element={<PropertyDetails addToFavourites={addToFavourites} />}
+          />
+        </Routes>
+      </main>
+    </div>
   );
 }
 
