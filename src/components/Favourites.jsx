@@ -15,7 +15,7 @@ function Favourites({
         <>
             {/* Favourites Sidebar */}
             <aside className="favourites-sidebar">
-                <h2>Favourites</h2>
+                <h2 style={{textAlign: "center", marginTop: "5px"}}>Favourites</h2>
 
                 {/* Clear all favourites button */}
                 {favourites.length > 0 && (
@@ -48,8 +48,7 @@ function Favourites({
                             >
                                 <PropertyCard property={property} />
                                 <button
-                                    className="favourite-btn"
-                                    style={{ background: "red", maxWidth: "50%", margin: "5px 55px" }}
+                                    className="favourite-btn remove-btn"
                                     onClick={() => removeFromFavourites(property.id)}
                                 >
                                     Remove

@@ -88,6 +88,19 @@ function App() {
               <SearchForm onSearch={handleSearch} />
 
               <div className="home-main">
+                {/* Favourites section */}
+                <Favourites
+                  favourites={favourites}
+                  addToFavourites={addToFavourites}
+                  removeFromFavourites={removeFromFavourites}
+                  clearFavourites={clearFavourites}
+                  results={results}
+                  isDragging={isDragging}
+                  setIsDragging={setIsDragging}
+                  dragSource={dragSource}
+                  setDragSource={setDragSource} // track the source of the dragged item
+                />
+                
                 {/* Results section */}
                 <section className="results-container">
                   {results.length > 0 ? (
@@ -104,18 +117,6 @@ function App() {
                     <p>No properties match your search.</p>
                   )}
                 </section>
-
-                <Favourites
-                  favourites={favourites}
-                  addToFavourites={addToFavourites}
-                  removeFromFavourites={removeFromFavourites}
-                  clearFavourites={clearFavourites}
-                  results={results}
-                  isDragging={isDragging}
-                  setIsDragging={setIsDragging}
-                  dragSource={dragSource}
-                  setDragSource={setDragSource} // track the source of the dragged item
-                />
               </div>
             </>
           } />
